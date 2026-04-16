@@ -15,13 +15,10 @@ public class ItemController {
 
     @GetMapping("/list")
     String list(Model model) {
-
         List<Item> result = itemRepository.findAll();
-        System.out.println(result.get(0).title);
-        System.out.println(result.get(0).price);
-
-        System.out.println(result);
-        model.addAttribute("name", "홍길동");
+        var a = new Item();
+        System.out.println(a.toString());
+        model.addAttribute("items",  result );
         return "list.html";
     }
 }
