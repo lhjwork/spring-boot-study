@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -32,19 +31,20 @@ public class ItemController {
     }
 
     @PostMapping("/items")
-    String addItem(@RequestParam String title, @RequestParam String price){
-        System.out.println(title);
-        System.out.println(price);
+    String addItem(@RequestParam String title, @RequestParam Integer price){
+        Item item = new Item();
+        item.title = title;
+        item.price = price;
+        itemRepository.save(item);
         return "redirect:/list";
     }
 
     @PostMapping("/items/map")
-    String addMapItem (@RequestParam Map formData){
-        HashMap<String, Object> test = new HashMap<>();
-        test.put("name","kim");
-        test.put("age",20);
-        System.out.println(test);
-
+    String addMapItem(@RequestParam Map<String, String> formData){
+        Item item = new Item();
+        item.title = formData.get("title");
+        item.price = Integer.valueOf(formData.get("price"));
+        itemRepository.save(item);
         return "redirect:/list";
     }
 }
