@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-04-16T01:01:21.242Z",
+  "lastUpdated": "2026-04-17T13:42:19.904Z",
   "activeFeatures": [
     "shop"
   ],
@@ -15,7 +15,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-04-16T01:01:21.242Z",
-        "lastUpdated": "2026-04-16T01:01:21.242Z"
+        "lastUpdated": "2026-04-17T13:42:19.904Z"
       },
       "lastFile": "/Users/hanjinlee/Desktop/projects/springs/shop/src/main/java/com/mib/shop/ItemController.java"
     }
@@ -28,11 +28,23 @@
   "session": {
     "startedAt": "2026-04-13T10:49:55.227Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-04-16T01:01:21.242Z"
+    "lastActivity": "2026-04-17T13:42:19.904Z"
   },
   "history": [
     {
       "timestamp": "2026-04-16T01:01:21.242Z",
+      "feature": "shop",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-17T13:42:01.997Z",
+      "feature": "shop",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-17T13:42:19.904Z",
       "feature": "shop",
       "phase": "do",
       "action": "updated"
