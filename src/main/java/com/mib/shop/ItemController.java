@@ -33,8 +33,8 @@ public class ItemController {
     @PostMapping("/items")
     String addItem(@RequestParam String title, @RequestParam Integer price){
         Item item = new Item();
-        item.title = title;
-        item.price = price;
+        item.setTitle(title);
+        item.setPrice(price);
         itemRepository.save(item);
         return "redirect:/list";
     }
@@ -42,8 +42,8 @@ public class ItemController {
     @PostMapping("/items/map")
     String addMapItem(@RequestParam Map<String, String> formData){
         Item item = new Item();
-        item.title = formData.get("title");
-        item.price = Integer.valueOf(formData.get("price"));
+        item.setTitle(formData.get("title"));
+        item.setPrice(Integer.valueOf(formData.get("price")));
         itemRepository.save(item);
         return "redirect:/list";
     }
