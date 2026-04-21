@@ -54,8 +54,8 @@ public class ItemController {
     }
 
     @GetMapping("/items/{id}")
-    String viewItem(@PathVariable Integer id, Model model) {
-        Optional<Item> result = itemRepository.findById(Long.valueOf(id));
+    String viewItem(@PathVariable Long id, Model model) {
+        Optional<Item> result = itemRepository.findById(id);
 
         if (result.isPresent()) {
             model.addAttribute("item", result.get());

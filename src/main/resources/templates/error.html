@@ -1,16 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>오류 발생</title>
   <link href="/main.css" rel="stylesheet">
+  <style>
+    .error-container {
+      max-width: 520px;
+      margin: 80px auto;
+      padding: 48px 40px;
+      text-align: center;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .error-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+    .error-code {
+      font-size: 72px;
+      font-weight: 800;
+      color: #222;
+      margin: 0;
+      line-height: 1;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .error-message {
+      font-size: 18px;
+      color: #666;
+      margin: 12px 0 8px;
+    }
+    .error-detail {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 32px;
+    }
+    .error-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .error-actions a {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .error-actions a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .btn-home {
+      background: #000;
+      color: #fff;
+    }
+    .btn-back {
+      background: #f0f0f0;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
 
 <div th:replace="~{nav.html :: navbar}"></div>
 
-<div>Error view</div>
-
+<div class="error-container">
+  <div class="error-icon">⚠️</div>
+  <p class="error-code" th:text="${status != null ? status : '오류'}">오류</p>
+  <p class="error-message" th:text="${error != null ? error : '문제가 발생했습니다'}">문제가 발생했습니다</p>
+  <p class="error-detail" th:text="${message != null ? message : '요청을 처리하는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.'}">
+    요청을 처리하는 중 오류가 발생했습니다.
+  </p>
+  <div class="error-actions">
+    <a href="/" class="btn-home">홈으로</a>
+    <a href="javascript:history.back()" class="btn-back">뒤로가기</a>
+  </div>
+</div>
 
 </body>
 </html>
