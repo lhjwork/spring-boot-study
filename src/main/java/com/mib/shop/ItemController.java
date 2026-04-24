@@ -2,9 +2,11 @@ package com.mib.shop;
 
 import lombok.RequiredArgsConstructor;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +16,7 @@ import java.util.Optional;
 public class ItemController {
 
    private final ItemRepository itemRepository;
+   private final ItemService itemService;
 
     @GetMapping("/list")
     String list(Model model) {
@@ -31,10 +34,11 @@ public class ItemController {
 
     @PostMapping("/items")
     String addItem(@RequestParam String title, @RequestParam Integer price){
-        Item item = new Item();
-        item.setTitle(title);
-        item.setPrice(price);
-        itemRepository.save(item);
+        try {
+            itemService.saveItem(title, price);
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
         return "redirect:/list";
     }
 
